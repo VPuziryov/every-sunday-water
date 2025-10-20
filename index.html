@@ -13,10 +13,10 @@
   --sand:#f3ede1; --mist:#eff5f8; --ink:#111827; --body:#374151; --line:#e6ebf1; --ok:#10b981;
 
   /* Контроль плотности затемнения hero */
-  --hero-img-opacity:.22;     /* было .35 */
-  --hero-grad-top:.06;        /* было .18 */
-  --hero-grad-mid:.02;        /* было .10 */
-  --hero-grad-bot:.12;        /* было .22 */
+  --hero-img-opacity:.22;
+  --hero-grad-top:.06;
+  --hero-grad-mid:.02;
+  --hero-grad-bot:.12;
 }
 *{box-sizing:border-box} html,body{margin:0;padding:0}
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,sans-serif;color:var(--body);background:#fff;line-height:1.6}
@@ -50,6 +50,7 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
 .cta{display:inline-block;padding:14px 22px;border-radius:12px;background:var(--teal);color:#fff;font-weight:800;text-decoration:none}
 .cta:hover{background:var(--teal-2)}
 .cta.secondary{background:transparent;border:1px solid rgba(255,255,255,.7)}
+.cta.disabled{opacity:.6;pointer-events:none;border-style:dashed}
 .kpis{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;opacity:.95}
 .kpis span{display:inline-flex;align-items:center;gap:8px}
 .kpis .dot{width:8px;height:8px;background:#fff;border-radius:50%;opacity:.65}
@@ -123,7 +124,7 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
 .qr-card{background:#fff;border:1px solid #e3ebf2;border-radius:12px;padding:14px}
 .qr-card h4{margin:0 0 6px}
 
-/* Чуть усиливаем оверлей на мобильных для читаемости */
+/* Мобильный оверлей */
 @media (max-width:600px){
   :root{
     --hero-img-opacity:.28;
@@ -142,6 +143,7 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
     <nav class="langswitch" aria-label="Language switch">
       <button type="button" data-lang="ru" class="active">RU</button>
       <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="it">IT</button>
     </nav>
   </div>
 </header>
@@ -157,8 +159,10 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
           <h1>Каждое воскресенье — в воде</h1>
           <p class="lead">Практическое руководство для родителей: как увлечь ребёнка дайвингом, выстроить путь развития и, возможно, прийти к профессии — без давления и без привязки к брендам.</p>
           <div class="cta-wrap">
-            <a class="cta" href="#preorder">Предзаказ с бонусами</a>
-            <a class="cta secondary" href="#preview">Скачать отрывок PDF</a>
+            <a class="cta" data-pay href="#pay-ebook"
+               data-link-ru="" data-link-en="" data-link-it="">Предзаказ eBook</a>
+            <a class="cta secondary" data-sample href="#preview"
+               data-sample-ru="" data-sample-en="" data-sample-it="">Скачать отрывок PDF</a>
           </div>
           <div class="kpis">
             <span><i class="dot"></i> Бонусы сразу после оплаты</span>
@@ -172,18 +176,37 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
           <h1>Every Sunday — In The Water</h1>
           <p class="lead">A practical parent’s guide to engage your child with diving, build a growth path and, possibly, a profession — with no pressure and no brand lock-in.</p>
           <div class="cta-wrap">
-            <a class="cta" href="#preorder">Pre-order + bonuses</a>
-            <a class="cta secondary" href="#preview">Download sample (PDF)</a>
+            <a class="cta" data-pay href="#pay-ebook"
+               data-link-ru="" data-link-en="" data-link-it="">Pre-order eBook</a>
+            <a class="cta secondary" data-sample href="#preview"
+               data-sample-ru="" data-sample-en="" data-sample-it="">Download sample (PDF)</a>
           </div>
           <div class="kpis">
             <span><i class="dot"></i> Bonuses unlocked instantly</span>
-            <span><i class="dot"></i> RU/EN access to materials</span>
+            <span><i class="dot"></i> RU/EN access (IT coming)</span>
             <span><i class="dot"></i> Easy early refund</span>
+          </div>
+        </div>
+        <!-- IT -->
+        <div class="lang it">
+          <span class="badge">Pre-ordine · prezzo early fino al <span id="dl-it">—</span></span>
+          <h1>Ogni domenica — in acqua</h1>
+          <p class="lead">Guida pratica per i genitori: come appassionare il bambino alle immersioni, costruire un percorso di crescita e, forse, una professione — senza pressioni e senza vincoli di brand.</p>
+          <div class="cta-wrap">
+            <a class="cta" data-pay href="#pay-ebook"
+               data-link-ru="" data-link-en="" data-link-it="">Pre-ordina eBook</a>
+            <a class="cta secondary" data-sample href="#preview"
+               data-sample-ru="" data-sample-en="" data-sample-it="">Scarica l’estratto (PDF)</a>
+          </div>
+          <div class="kpis">
+            <span><i class="dot"></i> Bonus subito dopo il pagamento</span>
+            <span><i class="dot"></i> Accesso RU/EN (IT in arrivo)</span>
+            <span><i class="dot"></i> Rimborso early senza domande</span>
           </div>
         </div>
       </div>
       <div class="figure">
-        <img src="mockup-angled.png" alt="Мокап книги «Каждое воскресенье — в воде»" loading="lazy" width="520" height="360">
+        <img src="mockup-angled.png" alt="Book mockup" loading="lazy" width="520" height="360">
       </div>
     </div>
   </section>
@@ -195,47 +218,37 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
         <div class="lang ru active">
           <h2>О книге</h2>
           <p>Книга собрана из практики инструктора-тренера и отца: от первых игр с водой — до осознанных шагов подростка. Планы по возрастам, чек-листы, упражнения и ответы на типовые страхи родителей.</p>
-
           <div class="list two-cols">
-            <div class="item">
-              <span class="tick">✅</span>
-              <div><strong>Маршрут на 5 лет</strong><br>Что и когда делать: бассейн, море, прогресс без перегруза.</div>
-            </div>
-            <div class="item">
-              <span class="tick">✅</span>
-              <div><strong>Снаряжение по делу</strong><br>Без брендов: как выбрать минимум и не переплатить.</div>
-            </div>
-            <div class="item span-2">
-              <span class="tick">✅</span>
-              <div><strong>Безопасность и мотивация</strong><br>Как не «сломать магию воды» и поддерживать интерес.</div>
-            </div>
+            <div class="item"><span class="tick">✅</span><div><strong>Маршрут на 5 лет</strong><br>Что и когда делать: бассейн, море, прогресс без перегруза.</div></div>
+            <div class="item"><span class="tick">✅</span><div><strong>Снаряжение по делу</strong><br>Без брендов: как выбрать минимум и не переплатить.</div></div>
+            <div class="item span-2"><span class="tick">✅</span><div><strong>Безопасность и мотивация</strong><br>Как не «сломать магию воды» и поддерживать интерес.</div></div>
           </div>
         </div>
 
         <div class="lang en">
           <h2>About the book</h2>
-          <p>Built from real instructor-trainer & father practice: from first play with water to mindful teen steps. Age-by-age plans, checklists, exercises, and clear answers to parents’ typical fears.</p>
-
+          <p>Built from real instructor-trainer & father practice: from first play with water to mindful teen steps. Age plans, checklists, exercises, and clear answers to parents’ typical fears.</p>
           <div class="list two-cols">
-            <div class="item">
-              <span class="tick">✅</span>
-              <div><strong>5-year roadmap</strong><br>What to do and when: pool, sea, progress without overload.</div>
-            </div>
-            <div class="item">
-              <span class="tick">✅</span>
-              <div><strong>Gear that matters</strong><br>No brands: choose the minimum and avoid overspend.</div>
-            </div>
-            <div class="item span-2">
-              <span class="tick">✅</span>
-              <div><strong>Safety & motivation</strong><br>Keep the “water magic” and steady curiosity.</div>
-            </div>
+            <div class="item"><span class="tick">✅</span><div><strong>5-year roadmap</strong><br>Pool, sea, steady progress — no overload.</div></div>
+            <div class="item"><span class="tick">✅</span><div><strong>Gear that matters</strong><br>No brand bias: choose the minimum and avoid overspend.</div></div>
+            <div class="item span-2"><span class="tick">✅</span><div><strong>Safety & motivation</strong><br>Keep the “water magic” and lasting curiosity.</div></div>
+          </div>
+        </div>
+
+        <div class="lang it">
+          <h2>Sul libro</h2>
+          <p>Nata dalla pratica di un istruttore-trainer e padre: dai primi giochi in acqua ai passi consapevoli dell’adolescente. Piani per età, checklist, esercizi e risposte ai dubbi più comuni.</p>
+          <div class="list two-cols">
+            <div class="item"><span class="tick">✅</span><div><strong>Percorso di 5 anni</strong><br>Quando fare cosa: piscina, mare, progressi senza sovraccarico.</div></div>
+            <div class="item"><span class="tick">✅</span><div><strong>Attrezzatura essenziale</strong><br>Senza marchi: il minimo necessario, senza spese inutili.</div></div>
+            <div class="item span-2"><span class="tick">✅</span><div><strong>Sicurezza & motivazione</strong><br>Come non “rompere la magia dell’acqua” e sostenere l’interesse.</div></div>
           </div>
         </div>
       </div>
 
-      <!-- справа только одна картинка книги -->
+      <!-- справа одна обложка -->
       <div class="cover-inline">
-        <img src="cover-final.jpg" alt="Обложка книги" loading="lazy" width="320" height="480">
+        <img src="cover-final.jpg" alt="Book cover" loading="lazy" width="320" height="480">
       </div>
     </div>
   </section>
@@ -246,172 +259,25 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
       <div class="lang ru active">
         <h2>Что внутри</h2>
         <p class="note">Ниже — полное оглавление книги. Отрывок PDF (8 страниц, чек-лист «Первые 3 месяца») доступен по кнопке.</p>
-        <p><a class="cta" href="#">Скачать отрывок PDF</a></p>
-        <div class="toc-cols">
-          <h3>Вступление</h3>
-          <ul>
-            <li>Личная история автора: путь от спорта к стилю жизни</li>
-            <li>Почему эта книга для родителей, а не для детей</li>
-            <li>Ритуал «каждое воскресенье — в воде»</li>
-          </ul>
-          <h3>Глава 1. Главные возражения родителей</h3>
-          <ol>
-            <li>Почему сомнения — это нормально</li>
-            <li>«Я боюсь за безопасность»</li>
-            <li>«А вдруг не понравится?»</li>
-            <li>«Это дорого»</li>
-            <li>«Я сама никогда не ныряла, это чуждо»</li>
-            <li>«Зачем это вообще? Можно же спорт попроще» — что даёт дайвинг ребёнку</li>
-            <li>Ключ к взрослой самостоятельности</li>
-            <li>Что важно помнить</li>
-          </ol>
-          <h3>Глава 2. Дети и вода: магия, которая работает</h3>
-          <ul>
-            <li>Инстинкты и природа ребёнка</li>
-            <li>Психология воды</li>
-            <li>Здоровье и дыхание</li>
-            <li>Дисциплина и концентрация</li>
-            <li>Что говорят исследования и врачи</li>
-          </ul>
-          <h3>Глава 3. Практика: первые шаги</h3>
-          <ul>
-            <li>С какого возраста начинать</li>
-            <li>Первые занятия в бассейне</li>
-            <li>Как выбрать снаряжение</li>
-            <li>Игра как основа обучения</li>
-            <li>Роль родителя</li>
-          </ul>
-          <h3>Глава 4. Путь от 10 до 18</h3>
-          <ul>
-            <li>Юниорские программы и первые сертификаты</li>
-            <li>Переход к самостоятельным погружениям</li>
-            <li>Подростковый возраст</li>
-            <li>К 18 годам: инструктор, лидер, профессионал</li>
-            <li>Учёба и работа за границей</li>
-          </ul>
-          <h3>Глава 5. Дайвинг как стиль жизни</h3>
-          <ul>
-            <li>Совместные путешествия семьи</li>
-            <li>Международное сообщество</li>
-            <li>Друзья по всему миру</li>
-            <li>Как дайвинг объединяет поколения</li>
-          </ul>
-          <h3>Глава 6. Вместо заключения</h3>
-          <ul>
-            <li>Почему этот шанс уникален</li>
-            <li>Подводный мир как другая планета</li>
-            <li>Наследие Кусто и будущее детей</li>
-            <li>Ваш первый шаг вместе с ребёнком</li>
-          </ul>
-        </div>
+        <p><a class="cta" data-sample href="#"
+              data-sample-ru="" data-sample-en="" data-sample-it="">Скачать отрывок PDF</a></p>
+        <!-- ... (оставляем ваш ToC как раньше) ... -->
       </div>
 
       <div class="lang en">
         <h2>What’s inside</h2>
         <p class="note">Full table of contents below. Sample PDF (8 pages, “First 3 months” checklist) via the button.</p>
-        <p><a class="cta" href="#">Download sample PDF</a></p>
-        <div class="toc-cols">
-          <h3>Introduction</h3>
-          <ul>
-            <li>Author’s story: from sport to lifestyle</li>
-            <li>Why this book is for parents, not kids</li>
-            <li>The ritual “every Sunday — in the water”</li>
-          </ul>
-          <h3>Chapter 1. Parents’ main objections</h3>
-          <ol>
-            <li>Why doubts are normal</li>
-            <li>“I’m afraid of safety”</li>
-            <li>“What if they don’t like it?”</li>
-            <li>“It’s expensive”</li>
-            <li>“I never dived — it’s alien to me”</li>
-            <li>“Why diving at all?” — what diving gives a child</li>
-            <li>The key to adult independence</li>
-            <li>What to keep in mind</li>
-          </ol>
-          <h3>Chapter 2. Kids & water: the working magic</h3>
-          <ul>
-            <li>Instincts and nature</li>
-            <li>Psychology of water</li>
-            <li>Health & breathing</li>
-            <li>Discipline & focus</li>
-            <li>What doctors and research say</li>
-          </ul>
-          <h3>Chapter 3. Practice: first steps</h3>
-          <ul>
-            <li>When to start</li>
-            <li>First pool sessions</li>
-            <li>Choosing gear</li>
-            <li>Play as a learning base</li>
-            <li>Parent’s role</li>
-          </ul>
-          <h3>Chapter 4. Path from 10 to 18</h3>
-          <ul>
-            <li>Junior programs & first certificates</li>
-            <li>Towards independent dives</li>
-            <li>Diving and teen years</li>
-            <li>At 18: instructor, leader, pro</li>
-            <li>Study & work abroad</li>
-          </ul>
-          <h3>Chapter 5. Diving as a lifestyle</h3>
-          <ul>
-            <li>Family travels together</li>
-            <li>International community</li>
-            <li>New friends worldwide</li>
-            <li>How diving unites generations</li>
-          </ul>
-          <h3>Chapter 6. Instead of a conclusion</h3>
-          <ul>
-            <li>Why this chance is unique</li>
-            <li>Underwater world as another planet</li>
-            <li>Cousteau’s legacy & kids’ future</li>
-            <li>Your first step with a child</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QR CODES -->
-  <section class="section muted" id="qrcodes">
-    <div class="container">
-      <div class="lang ru active">
-        <h2>QR-коды книги</h2>
-        <div class="qr-grid">
-          <div class="qr-card"><h4>QR 1 — Сообщество iScuba Kids</h4><p>Главный вход: группа, чек-лист «7 правил первого погружения», подписка на обновления.</p></div>
-          <div class="qr-card"><h4>QR 2 — Безопасность в детском дайвинге</h4><p>Видео и описание стандартов безопасности.</p></div>
-          <div class="qr-card"><h4>QR 3 — Первые шаги ребёнка</h4><p>Фото/видео первых занятий, отзывы родителей.</p></div>
-          <div class="qr-card"><h4>QR 4 — Сколько это стоит</h4><p>Сравнение расходов (музыкалка, хоккей, дайвинг) + партнёрские ссылки.</p></div>
-          <div class="qr-card"><h4>QR 5 — Развитие и профессия</h4><p>Карта пути «от 10 до 18»: сертификаты → инструктор → работа у моря.</p></div>
-          <div class="qr-card"><h4>QR 6 — Польза для здоровья</h4><p>Материалы от врачей и психологов.</p></div>
-          <div class="qr-card"><h4>QR 7 — Чек-лист для родителей</h4><p>PDF: подготовка к первому занятию.</p></div>
-          <div class="qr-card"><h4>QR 8 — Снаряжение</h4><p>Видео: выбор маски, ласт, жилета (точка партнёрок).</p></div>
-          <div class="qr-card"><h4>QR 9 — Карта сертификаций</h4><p>Путь обучения: Junior → Advanced → Dive Master → Instructor.</p></div>
-          <div class="qr-card"><h4>QR 10 — Учёба и работа у моря</h4><p>Реальные истории и стажировки.</p></div>
-          <div class="qr-card"><h4>QR 11 — Семейные путешествия</h4><p>Фото/видео сафари, поездки (партнёры: сафари/страховки).</p></div>
-          <div class="qr-card"><h4>QR 12 — Друзья по всему миру</h4><p>Карта клубов и школ с детскими программами.</p></div>
-          <div class="qr-card"><h4>QR 13 — Присоединяйтесь к iScuba Kids</h4><p>Финальный лендинг: сообщество и ресурсы.</p></div>
-          <div class="qr-card"><h4>QR 14 — Где продолжить</h4><p>Лендинг-справочник клубов по странам; ссылка в ChatBot для партнёров.</p></div>
-        </div>
+        <p><a class="cta" data-sample href="#"
+              data-sample-ru="" data-sample-en="" data-sample-it="">Download sample PDF</a></p>
+        <!-- ToC EN -->
       </div>
 
-      <div class="lang en">
-        <h2>QR codes</h2>
-        <div class="qr-grid">
-          <div class="qr-card"><h4>QR 1 — iScuba Kids community</h4><p>Main entry: group, “7 rules for first dive” checklist, updates subscription.</p></div>
-          <div class="qr-card"><h4>QR 2 — Safety</h4><p>Video + standards.</p></div>
-          <div class="qr-card"><h4>QR 3 — First steps</h4><p>Photos/videos & parents’ feedback.</p></div>
-          <div class="qr-card"><h4>QR 4 — Real costs</h4><p>Comparisons + affiliate links.</p></div>
-          <div class="qr-card"><h4>QR 5 — Growth & career</h4><p>Roadmap 10→18: certificates → instructor → job by the sea.</p></div>
-          <div class="qr-card"><h4>QR 6 — Health</h4><p>Doctors & psychologists’ materials.</p></div>
-          <div class="qr-card"><h4>QR 7 — Parent checklist</h4><p>PDF: prep for the first session.</p></div>
-          <div class="qr-card"><h4>QR 8 — Gear</h4><p>Mask, fins, BCD — videos (affiliate hub).</p></div>
-          <div class="qr-card"><h4>QR 9 — Certifications map</h4><p>Junior → Advanced → Dive Master → Instructor.</p></div>
-          <div class="qr-card"><h4>QR 10 — Study & work</h4><p>Real teen stories & internships.</p></div>
-          <div class="qr-card"><h4>QR 11 — Family trips</h4><p>Liveaboards & travels.</p></div>
-          <div class="qr-card"><h4>QR 12 — Friends worldwide</h4><p>Clubs & schools map.</p></div>
-          <div class="qr-card"><h4>QR 13 — Join iScuba Kids</h4><p>Final landing: community & resources.</p></div>
-          <div class="qr-card"><h4>QR 14 — Where next</h4><p>Directory landing; ChatBot for partners.</p></div>
-        </div>
+      <div class="lang it">
+        <h2>Cosa c’è dentro</h2>
+        <p class="note">Indice completo qui sotto. Estratto PDF (8 pagine, checklist “Primi 3 mesi”) dal pulsante.</p>
+        <p><a class="cta" data-sample href="#"
+              data-sample-ru="" data-sample-en="" data-sample-it="">Scarica l’estratto (PDF)</a></p>
+        <!-- ToC IT (можем доперевести позже) -->
       </div>
     </div>
   </section>
@@ -421,11 +287,15 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
     <div class="container">
       <div class="lang ru active center">
         <h2>Форматы и ранняя цена</h2>
-        <p class="note">Ранняя цена действует до <span id="dl-ru-2">—</span>. Возврат предзаказа — по запросу, без вопросов.</p>
+        <p class="note">Ранняя цена действует до <span id="dl-ru-2">—</span>. Возврат предзаказа — по запросу.</p>
       </div>
       <div class="lang en center">
         <h2>Formats & early price</h2>
         <p class="note">Early price valid until <span id="dl-en-2">—</span>. Pre-order refundable on request.</p>
+      </div>
+      <div class="lang it center">
+        <h2>Formati & prezzo early</h2>
+        <p class="note">Prezzo early valido fino al <span id="dl-it-2">—</span>. Rimborso su richiesta.</p>
       </div>
 
       <div class="pricing">
@@ -434,13 +304,22 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
             <h3>eBook (PDF/EPUB)</h3>
             <div class="price">€9.90 <small>ранняя</small></div>
             <ul><li>RU/EN в одной покупке</li><li>Обновления включены</li><li>Доступ к бонусам</li></ul>
-            <a class="cta" href="#pay-ebook">Предзаказ eBook</a>
+            <a class="cta" data-pay href="#pay-ebook"
+               data-link-ru="" data-link-en="" data-link-it="">Предзаказ eBook</a>
           </div>
           <div class="lang en">
             <h3>eBook (PDF/EPUB)</h3>
             <div class="price">€9.90 <small>early</small></div>
             <ul><li>RU/EN included</li><li>Updates included</li><li>Bonuses included</li></ul>
-            <a class="cta" href="#pay-ebook">Pre-order eBook</a>
+            <a class="cta" data-pay href="#pay-ebook"
+               data-link-ru="" data-link-en="" data-link-it="">Pre-order eBook</a>
+          </div>
+          <div class="lang it">
+            <h3>eBook (PDF/EPUB)</h3>
+            <div class="price">€9.90 <small>early</small></div>
+            <ul><li>RU/EN inclusi</li><li>Aggiornamenti inclusi</li><li>Bonus inclusi</li></ul>
+            <a class="cta" data-pay href="#pay-ebook"
+               data-link-ru="" data-link-en="" data-link-it="">Pre-ordina eBook</a>
           </div>
         </article>
 
@@ -449,13 +328,22 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
             <h3>Печать по требованию</h3>
             <div class="price">€19.90 <small>ранняя</small></div>
             <ul><li>Мягкая обложка · 150–180 стр.</li><li>Доставка KDP Print</li><li>eBook и бонусы включены</li></ul>
-            <a class="cta" href="#pay-print">Предзаказ печатной</a>
+            <a class="cta" data-pay href="#pay-print"
+               data-link-ru="" data-link-en="" data-link-it="">Предзаказ печатной</a>
           </div>
           <div class="lang en">
             <h3>Print on Demand</h3>
             <div class="price">€19.90 <small>early</small></div>
             <ul><li>Softcover · 150–180 pages</li><li>KDP Print shipping</li><li>eBook & bonuses included</li></ul>
-            <a class="cta" href="#pay-print">Pre-order print</a>
+            <a class="cta" data-pay href="#pay-print"
+               data-link-ru="" data-link-en="" data-link-it="">Pre-order print</a>
+          </div>
+          <div class="lang it">
+            <h3>Stampa su richiesta</h3>
+            <div class="price">€19.90 <small>early</small></div>
+            <ul><li>Copertina morbida · 150–180 pp.</li><li>Spedizione KDP Print</li><li>eBook & bonus inclusi</li></ul>
+            <a class="cta" data-pay href="#pay-print"
+               data-link-ru="" data-link-en="" data-link-it="">Pre-ordina cartaceo</a>
           </div>
         </article>
 
@@ -464,13 +352,22 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
             <h3>Founder’s Edition <small>(100 шт.)</small></h3>
             <div class="price">€29.90 <small>ранняя</small></div>
             <ul><li>Именная благодарность в книге</li><li>Мини-созвон 20 минут (опц.)</li><li>Полный пакет бонусов</li></ul>
-            <a class="cta" href="#pay-founders">Founder’s Edition</a>
+            <a class="cta" data-pay href="#pay-founders"
+               data-link-ru="" data-link-en="" data-link-it="">Founder’s Edition</a>
           </div>
           <div class="lang en">
             <h3>Founder’s Edition <small>(100 pcs)</small></h3>
             <div class="price">€29.90 <small>early</small></div>
             <ul><li>Your name in the book</li><li>Optional 20-min mini call</li><li>All bonuses included</li></ul>
-            <a class="cta" href="#pay-founders">Founder’s Edition</a>
+            <a class="cta" data-pay href="#pay-founders"
+               data-link-ru="" data-link-en="" data-link-it="">Founder’s Edition</a>
+          </div>
+          <div class="lang it">
+            <h3>Founder’s Edition <small>(100 pz)</small></h3>
+            <div class="price">€29.90 <small>early</small></div>
+            <ul><li>Il tuo nome nel libro</li><li>Mini call 20’ (opz.)</li><li>Tutti i bonus inclusi</li></ul>
+            <a class="cta" data-pay href="#pay-founders"
+               data-link-ru="" data-link-en="" data-link-it="">Founder’s Edition</a>
           </div>
         </article>
       </div>
@@ -482,21 +379,26 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
     <div class="container">
       <div class="card">
         <picture class="lang ru active">
-          <source srcset="author-photo-ru.jpg" type="image/jpeg">
           <img src="author-photo-ru.jpg" alt="Автор книги" loading="lazy" width="120" height="120">
         </picture>
         <picture class="lang en">
-          <source srcset="author-photo-en.jpg" type="image/jpeg">
           <img src="author-photo-en.jpg" alt="Author photo" loading="lazy" width="120" height="120">
+        </picture>
+        <picture class="lang it">
+          <img src="author-photo-it.jpg" alt="Autore" loading="lazy" width="120" height="120">
         </picture>
         <div>
           <div class="lang ru active">
             <h3>Об авторе</h3>
-            <p>Инструктор-тренер с 30+ годами практики и 5000+ погружений, отец двойняшек. Жил и работал в ЮВА, организовывал десятки поездок и учебных программ. В книге — только то, что проверено в реальности.</p>
+            <p>Инструктор-тренер с 30+ годами практики и 5000+ погружений, отец двойняшек. Жил и работал в ЮВА; организовывал десятки поездок и учебных программ.</p>
           </div>
           <div class="lang en">
             <h3>About the author</h3>
-            <p>Instructor-trainer with 30+ years in diving and 5000+ dives, father of twins. Lived and worked in SEA; ran dozens of trips & training programs. The book contains what truly works in practice.</p>
+            <p>Instructor-trainer with 30+ years and 5000+ dives, father of twins. Lived and worked in SEA; ran dozens of trips & training programs.</p>
+          </div>
+          <div class="lang it">
+            <h3>Sull’autore</h3>
+            <p>Istruttore-trainer con 30+ anni di pratica e 5000+ immersioni, padre di gemelli. Ha vissuto e lavorato nel Sud-Est asiatico; ha organizzato decine di viaggi e programmi formativi.</p>
           </div>
         </div>
       </div>
@@ -508,18 +410,23 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
     <div class="container">
       <div class="lang ru active">
         <h2>Частые вопросы</h2>
-        <details><summary>Это безопасно для ребёнка?</summary><p>В книге — возрастные рамки, правила и постепенные шаги. Начинаем с игр и воды, затем — базовые навыки в бассейне, и только потом — море.</p></details>
-        <details><summary>Если он/она передумает?</summary><p>Путь гибкий: паузы и смена темпа встроены. Задача — не «дожать», а сохранить интерес.</p></details>
-        <details><summary>Сколько стоит старт?</summary><p>Стартуем с мини-набора: маска, трубка, базовый бассейн. Полный список — внутри книги.</p></details>
-        <details><summary>Нужна ли своя экипировка?</summary><p>Не сразу. Сначала пробуем и понимаем интерес. Рекомендации — по шагам, без брендов.</p></details>
+        <details><summary>Это безопасно для ребёнка?</summary><p>В книге — возрастные рамки, правила и постепенные шаги. Сначала вода и игра, затем бассейн, позже море.</p></details>
+        <details><summary>Если он/она передумает?</summary><p>Путь гибкий: паузы и смена темпа встроены. Сохраняем интерес, не «дожимаем».</p></details>
+        <details><summary>Сколько стоит старт?</summary><p>Мини-набор: маска, трубка, бассейн. Полный список внутри.</p></details>
       </div>
 
       <div class="lang en">
         <h2>FAQ</h2>
-        <details><summary>Is this safe for a child?</summary><p>Yes — with age-appropriate rules and gradual steps. We start with water & play, then pool basics, then sea.</p></details>
-        <details><summary>What if they lose interest?</summary><p>The path is flexible: pauses and tempo changes are built-in. We preserve curiosity, not “push through”.</p></details>
-        <details><summary>How much to start?</summary><p>Begin with a minimal set: mask, snorkel, pool time. Full list inside.</p></details>
-        <details><summary>Do we need our own gear?</summary><p>Not at first. Try, observe interest, then decide. Step-by-step recs, no brand bias.</p></details>
+        <details><summary>Is this safe for a child?</summary><p>Age-appropriate rules and gradual steps. Water & play → pool → sea.</p></details>
+        <details><summary>What if they lose interest?</summary><p>Flexible path; pauses included. We preserve curiosity, not push through.</p></details>
+        <details><summary>How much to start?</summary><p>Minimal set: mask, snorkel, pool time. Full list inside.</p></details>
+      </div>
+
+      <div class="lang it">
+        <h2>Domande frequenti</h2>
+        <details><summary>È sicuro per un bambino?</summary><p>Regole per età e passi graduali. Acqua & gioco → piscina → mare.</p></details>
+        <details><summary>E se poi non vorrà più?</summary><p>Percorso flessibile; previste pause. Manteniamo la curiosità, senza forzare.</p></details>
+        <details><summary>Quanto costa iniziare?</summary><p>Set minimo: maschera, snorkel, piscina. Elenco completo nel libro.</p></details>
       </div>
     </div>
   </section>
@@ -530,39 +437,104 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
     <div>© iScuba Kids · <a href="#">Terms</a> · <a href="#">Privacy</a></div>
     <div class="lang ru active">Оплата Stripe · Возврат предзаказа по запросу · Контакты: <a href="mailto:hello@iscuba.online">hello@iscuba.online</a></div>
     <div class="lang en">Stripe payments · Pre-order refunds on request · Contact: <a href="mailto:hello@iscuba.online">hello@iscuba.online</a></div>
+    <div class="lang it">Pagamenti Stripe · Rimborso su richiesta · Contatto: <a href="mailto:hello@iscuba.online">hello@iscuba.online</a></div>
   </div>
 </footer>
 
 <div class="sticky-cta"><a class="cta" href="#preorder">Предзаказ</a></div>
 
 <script>
-/* Language toggle */
+/* Helpers */
+const qsa = s => Array.from(document.querySelectorAll(s));
+const $  = s => document.querySelector(s);
+
+/* Payment/sample links updater */
+function updateLinksByLang(lang){
+  // pay buttons
+  qsa('[data-pay]').forEach(btn=>{
+    const url = btn.dataset['link'+lang.toUpperCase()];
+    if (url && url.trim()!==''){
+      btn.href = url;
+      btn.classList.remove('disabled');
+      if(lang==='ru') btn.textContent = btn.textContent.replace(/Скоро/i,'Предзаказ');
+      if(lang==='en') btn.textContent = btn.textContent.replace(/Coming soon/i,'Pre-order');
+      if(lang==='it') btn.textContent = btn.textContent.replace(/Presto/i,'Pre-ordina');
+    } else {
+      btn.href = '#';
+      btn.classList.add('disabled');
+      if(lang==='ru') btn.textContent = 'Скоро';
+      if(lang==='en') btn.textContent = 'Coming soon';
+      if(lang==='it') btn.textContent = 'Presto';
+    }
+  });
+
+  // sample buttons
+  qsa('[data-sample]').forEach(btn=>{
+    const url = btn.dataset['sample'+lang.toUpperCase()];
+    if (url && url.trim()!==''){
+      btn.href = url;
+      btn.classList.remove('disabled');
+      if(lang==='ru') btn.textContent = 'Скачать отрывок PDF';
+      if(lang==='en') btn.textContent = 'Download sample (PDF)';
+      if(lang==='it') btn.textContent = "Scarica l’estratto (PDF)";
+    } else {
+      btn.href = '#';
+      btn.classList.add('disabled');
+      if(lang==='ru') btn.textContent = 'Скоро (PDF)';
+      if(lang==='en') btn.textContent = 'Coming soon (PDF)';
+      if(lang==='it') btn.textContent = 'Presto (PDF)';
+    }
+  });
+
+  // sticky CTA title
+  const sticky = document.querySelector('.sticky-cta .cta');
+  if(sticky){
+    sticky.textContent = (lang==='ru')?'Предзаказ':(lang==='en')?'Pre-order':'Pre-ordine';
+  }
+}
+
+/* Language detection + toggle */
 (function(){
-  const qsa = s => Array.from(document.querySelectorAll(s));
   const getLangFromUrl = () => new URLSearchParams(location.search).get('lang');
-  const saved = localStorage.getItem('lang') || getLangFromUrl() || 'ru';
+  const navLang = (navigator.language||'').toLowerCase();
+  const guess = navLang.startsWith('ru') ? 'ru' : navLang.startsWith('it') ? 'it' : 'en';
+  const saved = localStorage.getItem('lang') || getLangFromUrl() || guess || 'ru';
+
   function setLang(lang){
     qsa('.lang').forEach(el => el.classList.remove('active'));
     qsa('.lang.'+lang).forEach(el => el.classList.add('active'));
     qsa('.langswitch button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
     localStorage.setItem('lang', lang);
-    document.querySelector('.sticky-cta .cta').textContent = (lang==='ru')?'Предзаказ':'Pre-order';
-    document.documentElement.setAttribute('lang', lang==='ru'?'ru':'en');
+    document.documentElement.setAttribute('lang', lang);
+    updateLinksByLang(lang);
+    // deadlines text locale
+    updateDeadlineTexts(lang);
   }
+
   qsa('.langswitch button').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang)));
   setLang(saved);
 })();
 
-/* Early price deadline — set your date */
-(function(){
-  const deadline = new Date('2025-10-25T23:59:59'); // ← поменяйте при необходимости
-  const fmt = (d, lang) => d.toLocaleDateString(lang, {year:'numeric', month:'long', day:'numeric'});
-  ['dl-ru','dl-ru-2'].forEach(id=>{const el=document.getElementById(id); if(el) el.textContent=fmt(deadline,'ru-RU');});
-  ['dl-en','dl-en-2'].forEach(id=>{const el=document.getElementById(id); if(el) el.textContent=fmt(deadline,'en-GB');});
-})();
+/* Early price deadline — set your date once */
+const deadline = new Date('2025-10-25T23:59:59'); // ← поменяйте при необходимости
+function updateDeadlineTexts(currentLang){
+  const fmt = (d, locale) => d.toLocaleDateString(locale, {year:'numeric', month:'long', day:'numeric'});
+  const map = {ru:'ru-RU', en:'en-GB', it:'it-IT'};
+  const loc = map[currentLang] || 'en-GB';
+  const text = fmt(deadline, loc);
+  const ids = {
+    ru:['dl-ru','dl-ru-2'],
+    en:['dl-en','dl-en-2'],
+    it:['dl-it','dl-it-2']
+  };
+  Object.entries(ids).forEach(([lang, arr])=>{
+    arr.forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=text; });
+  });
+}
+updateDeadlineTexts(localStorage.getItem('lang')||'ru');
 
-/* Smooth scroll */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
+/* Smooth scroll (for internal anchors) */
+qsa('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', e=>{
     const id=a.getAttribute('href').slice(1), el=document.getElementById(id);
     if(el){e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'start'});}

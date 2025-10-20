@@ -12,16 +12,18 @@
   --deep:#0b1f3a; --deep-2:#071525; --teal:#0e8aa7; --teal-2:#0b7390;
   --sand:#f3ede1; --mist:#eff5f8; --ink:#111827; --body:#374151; --line:#e6ebf1; --ok:#10b981;
 
-  /* контроль плотности затемнения hero */
-  --hero-img-opacity: .22;     /* было .35 */
-  --hero-grad-top: .06;        /* было .18 */
-  --hero-grad-mid: .02;        /* было .10 */
-  --hero-grad-bot: .12;        /* было .22 */
+  /* Контроль плотности затемнения hero */
+  --hero-img-opacity:.22;     /* было .35 */
+  --hero-grad-top:.06;        /* было .18 */
+  --hero-grad-mid:.02;        /* было .10 */
+  --hero-grad-bot:.12;        /* было .22 */
 }
 *{box-sizing:border-box} html,body{margin:0;padding:0}
 body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,sans-serif;color:var(--body);background:#fff;line-height:1.6}
 .container{max-width:1040px;margin:0 auto;padding:0 20px}
 .section{padding:56px 0} .hr{height:1px;background:var(--line);margin:32px 0}
+
+/* Header */
 .header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid var(--line)}
 .header .row{display:flex;align-items:center;justify-content:space-between;height:60px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--ink);text-decoration:none}
@@ -31,7 +33,7 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
 .langswitch button.active{background:var(--mist);border:1px solid #dbe7ee}
 
 /* HERO */
-.hero{color:#fff; padding:84px 0 72px; position:relative; overflow:hidden; background:#0d2745}
+.hero{color:#fff;padding:84px 0 72px;position:relative;overflow:hidden;background:#0d2745}
 .hero::before{content:"";position:absolute;inset:0;background:url('hero-bg.jpg') center/cover no-repeat;opacity:var(--hero-img-opacity)}
 .hero::after{
   content:"";position:absolute;inset:0;
@@ -42,60 +44,92 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
 }
 .hero > .container{position:relative}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
-.hero h1{font-size:44px; line-height:1.1; margin:0 0 12px; text-shadow:0 2px 6px rgba(0,0,0,.25)}
-.hero p.lead{font-size:18px; opacity:.95; margin:0 0 22px; text-shadow:0 2px 6px rgba(0,0,0,.18)}
+.hero h1{font-size:44px;line-height:1.1;margin:0 0 12px;text-shadow:0 2px 6px rgba(0,0,0,.25)}
+.hero p.lead{font-size:18px;opacity:.95;margin:0 0 22px;text-shadow:0 2px 6px rgba(0,0,0,.18)}
 .cta-wrap{display:flex;gap:12px;flex-wrap:wrap}
-.cta{display:inline-block; padding:14px 22px; border-radius:12px; background:var(--teal); color:#fff; font-weight:800; text-decoration:none}
+.cta{display:inline-block;padding:14px 22px;border-radius:12px;background:var(--teal);color:#fff;font-weight:800;text-decoration:none}
 .cta:hover{background:var(--teal-2)}
-.cta.secondary{background:transparent; border:1px solid rgba(255,255,255,.7)}
+.cta.secondary{background:transparent;border:1px solid rgba(255,255,255,.7)}
 .kpis{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;opacity:.95}
 .kpis span{display:inline-flex;align-items:center;gap:8px}
 .kpis .dot{width:8px;height:8px;background:#fff;border-radius:50%;opacity:.65}
+.figure{display:flex;align-items:center;justify-content:center}
+.figure img{max-width:100%;height:auto;border-radius:14px;box-shadow:0 10px 24px rgba(2,12,27,.35)}
 
+/* Sections / Cards */
 .muted{background:var(--mist)}
 .twocol{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
 @media (max-width:900px){.hero-grid,.twocol{grid-template-columns:1fr}}
+
 .list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .item{background:#fff;border:1px solid #dfe9f0;border-radius:12px;padding:14px 14px 14px 12px;display:flex;gap:10px;align-items:flex-start}
 .item .tick{color:var(--ok);font-weight:900;margin-top:2px}
-.figure{display:flex;align-items:center;justify-content:center}
-.figure img{max-width:100%;height:auto;border-radius:14px;box-shadow:0 10px 24px rgba(2,12,27,.35)}
+
+/* ABOUT: 2 карточки + 1 широкая на десктопе */
+.list.two-cols{display:grid;grid-template-columns:repeat(2,minmax(260px,1fr));gap:14px}
+.item.span-2{grid-column:1 / -1}
+@media (max-width:900px){
+  .list.two-cols{grid-template-columns:1fr}
+  .item.span-2{grid-column:auto}
+}
+
+/* Обложка справа — одна */
+.cover-inline{display:flex;align-items:center;justify-content:center}
+.cover-inline img{width:320px;max-width:40vw;height:auto;border-radius:14px;box-shadow:0 10px 24px rgba(2,12,27,.35)}
+@media (max-width:900px){
+  .cover-inline img{width:220px;max-width:60vw}
+}
+
 .badge{display:inline-block;background:#173a67;color:#cfe7ff;padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid rgba(255,255,255,.2)}
 
-.pricing{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.price-card{background:#0e223f; color:#fff; border-radius:16px; padding:22px; box-shadow:0 10px 24px rgba(2,12,27,.25); border:1px solid rgba(255,255,255,.06)}
-.price-card h3{margin:0 0 8px} .price{font-size:28px; font-weight:800; margin:4px 0 12px}
-.price small{opacity:.8} .price-card ul{margin:10px 0 16px;padding-left:18px}
-.price-card .cta{background:var(--teal); width:100%; text-align:center}
+/* Pricing */
+.pricing{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.price-card{background:#0e223f;color:#fff;border-radius:16px;padding:22px;box-shadow:0 10px 24px rgba(2,12,27,.25);border:1px solid rgba(255,255,255,.06)}
+.price-card h3{margin:0 0 8px}
+.price{font-size:28px;font-weight:800;margin:4px 0 12px}
+.price small{opacity:.8}
+.price-card ul{margin:10px 0 16px;padding-left:18px}
+.price-card .cta{background:var(--teal);width:100%;text-align:center}
 
+/* Author */
 .author{background:var(--sand)}
 .author .card{display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:center;background:#fff;border:1px solid #ebdfc8;border-radius:14px;padding:16px}
 .author img{width:120px;height:120px;object-fit:cover;border-radius:12px;background:#ddd}
 
-.faq details{background:#fff; border:1px solid #e8eef4; border-radius:12px; padding:14px 18px}
-.faq details+details{margin-top:10px} .faq summary{cursor:pointer;font-weight:700;color:var(--ink)} .faq p{margin:10px 0 0}
+/* FAQ */
+.faq details{background:#fff;border:1px solid #e8eef4;border-radius:12px;padding:14px 18px}
+.faq details+details{margin-top:10px}
+.faq summary{cursor:pointer;font-weight:700;color:var(--ink)}
+.faq p{margin:10px 0 0}
 
-.sticky-cta{position:fixed; right:16px; bottom:16px; z-index:60; display:flex; gap:8px; align-items:center}
-.sticky-cta .cta{box-shadow:0 10px 20px rgba(14,138,167,.35)} @media (min-width:901px){.sticky-cta{display:none}}
+/* Sticky CTA */
+.sticky-cta{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;gap:8px;align-items:center}
+.sticky-cta .cta{box-shadow:0 10px 20px rgba(14,138,167,.35)}
+@media (min-width:901px){.sticky-cta{display:none}}
 
+/* Footer */
 .footer{padding:28px 0;color:#6b7280;border-top:1px solid var(--line);font-size:14px}
-.footer a{color:inherit} .footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.footer a{color:inherit}
+.footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
-.lang{display:none} .lang.active{display:block} .center{text-align:center} .note{font-size:13px;opacity:.8}
+/* Utils */
+.lang{display:none} .lang.active{display:block}
+.center{text-align:center}
+.note{font-size:13px;opacity:.8}
 .toc-cols{columns:2;column-gap:32px} @media(max-width:900px){.toc-cols{columns:1}}
+
+/* QR grid */
 .qr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
 .qr-card{background:#fff;border:1px solid #e3ebf2;border-radius:12px;padding:14px}
 .qr-card h4{margin:0 0 6px}
-.cover-inline{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.cover-inline img{width:220px;max-width:45vw;height:auto;border-radius:14px;box-shadow:0 10px 24px rgba(2,12,27,.35)}
 
-/* Чуть усиливаем оверлей на мобильных для читаемости поверх пёстрых фото */
+/* Чуть усиливаем оверлей на мобильных для читаемости */
 @media (max-width:600px){
   :root{
-    --hero-img-opacity: .28;
-    --hero-grad-top: .10;
-    --hero-grad-mid: .06;
-    --hero-grad-bot: .18;
+    --hero-img-opacity:.28;
+    --hero-grad-top:.10;
+    --hero-grad-mid:.06;
+    --hero-grad-bot:.18;
   }
 }
 </style>
@@ -161,25 +195,47 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
         <div class="lang ru active">
           <h2>О книге</h2>
           <p>Книга собрана из практики инструктора-тренера и отца: от первых игр с водой — до осознанных шагов подростка. Планы по возрастам, чек-листы, упражнения и ответы на типовые страхи родителей.</p>
-          <div class="list">
-            <div class="item"><span class="tick">✅</span><div><strong>Маршрут на 5 лет</strong><br>Что и когда делать: бассейн, море, прогресс без перегруза.</div></div>
-            <div class="item"><span class="tick">✅</span><div><strong>Снаряжение по делу</strong><br>Без брендов: как выбрать минимум и не переплатить.</div></div>
-            <div class="item"><span class="tick">✅</span><div><strong>Безопасность и мотивация</strong><br>Как не «сломать магию воды» и поддерживать интерес.</div></div>
+
+          <div class="list two-cols">
+            <div class="item">
+              <span class="tick">✅</span>
+              <div><strong>Маршрут на 5 лет</strong><br>Что и когда делать: бассейн, море, прогресс без перегруза.</div>
+            </div>
+            <div class="item">
+              <span class="tick">✅</span>
+              <div><strong>Снаряжение по делу</strong><br>Без брендов: как выбрать минимум и не переплатить.</div>
+            </div>
+            <div class="item span-2">
+              <span class="tick">✅</span>
+              <div><strong>Безопасность и мотивация</strong><br>Как не «сломать магию воды» и поддерживать интерес.</div>
+            </div>
           </div>
         </div>
+
         <div class="lang en">
           <h2>About the book</h2>
           <p>Built from real instructor-trainer & father practice: from first play with water to mindful teen steps. Age-by-age plans, checklists, exercises, and clear answers to parents’ typical fears.</p>
-          <div class="list">
-            <div class="item"><span class="tick">✅</span><div><strong>5-year roadmap</strong><br>What to do and when: pool, sea, progress without overload.</div></div>
-            <div class="item"><span class="tick">✅</span><div><strong>Gear that matters</strong><br>No brands: choose the minimum and avoid overspend.</div></div>
-            <div class="item"><span class="tick">✅</span><div><strong>Safety & motivation</strong><br>Keep the “water magic” and steady curiosity.</div></div>
+
+          <div class="list two-cols">
+            <div class="item">
+              <span class="tick">✅</span>
+              <div><strong>5-year roadmap</strong><br>What to do and when: pool, sea, progress without overload.</div>
+            </div>
+            <div class="item">
+              <span class="tick">✅</span>
+              <div><strong>Gear that matters</strong><br>No brands: choose the minimum and avoid overspend.</div>
+            </div>
+            <div class="item span-2">
+              <span class="tick">✅</span>
+              <div><strong>Safety & motivation</strong><br>Keep the “water magic” and steady curiosity.</div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- справа только одна картинка книги -->
       <div class="cover-inline">
-        <img src="cover-final.jpg" alt="Обложка книги" loading="lazy" width="220" height="330">
-        <img src="mockup-book.png" alt="Вид книги на столе" loading="lazy" width="220" height="330">
+        <img src="cover-final.jpg" alt="Обложка книги" loading="lazy" width="320" height="480">
       </div>
     </div>
   </section>

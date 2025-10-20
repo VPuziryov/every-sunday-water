@@ -25,7 +25,14 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
 .langswitch button.active{background:var(--mist);border:1px solid #dbe7ee}
 .hero{color:#fff; padding:84px 0 72px; position:relative; overflow:hidden; background:#0d2745}
 .hero::before{content:"";position:absolute;inset:0;background:url('hero-bg.jpg') center/cover no-repeat;opacity:.35}
-.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(80% 120% at 50% 0%, #12325500 0%, var(--deep) 60%, var(--deep-2) 100%);mix-blend:multiply}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  /* было: rgba(0,0,0,.45) ... rgba(0,0,0,.5) */
+  background:linear-gradient(180deg,
+    rgba(0,0,0,.18) 0%,
+    rgba(0,0,0,.10) 38%,
+    rgba(0,0,0,.22) 100%);
+}
 .hero > .container{position:relative}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
 .hero h1{font-size:44px; line-height:1.1; margin:0 0 12px}

@@ -123,3 +123,40 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
     --hero-grad-bot:.18;
   }
 }
+.excerpt-intro {
+  margin-top: 24px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0f172a; /* или твой основной текстовый цвет */
+}
+
+details.excerpt {
+  margin-bottom: 12px;
+}
+
+details.excerpt summary {
+  cursor: pointer;
+  font-weight: 500;
+}
+.author-main-block p {
+  margin: 0;
+}
+
+.author-name {
+  font-weight: 600;
+}
+
+.author-role {
+  margin-top: 2px;
+}
+
+.author-stats {
+  margin-top: 2px;
+  color: #475569;
+}
+
+.author-meta {
+  margin-top: 10px; /* вот ТУТ единственная пауза */
+}
+

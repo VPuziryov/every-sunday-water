@@ -159,4 +159,39 @@ details.excerpt summary {
 .author-meta {
   margin-top: 10px; /* вот ТУТ единственная пауза */
 }
+.hero::before,
+.hero::after {
+  pointer-events: none;
+}
+
+/* === Book excerpt (раскрывашка с фрагментом) === */
+
+details.excerpt {
+  margin-bottom: 16px;
+}
+
+details.excerpt summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.excerpt-content {
+  margin-top: 12px;
+}
+
+.excerpt-content p {
+  margin: 0 0 12px;
+}
+
+.excerpt-meta {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 12px;
+}
+
+.excerpt-highlight {
+  margin-top: 16px;
+  padding-left: 14px;
+  border-left: 3px solid rgba(0,0,0,0.15);
+}
 

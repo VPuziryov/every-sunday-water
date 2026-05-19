@@ -83,7 +83,7 @@ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto S
 .price-card .cta{background:var(--teal);width:100%;text-align:center}
 
 /* Author */
-.author{background:var(--sand)}
+.author{background:var(--mist)}
 .author .card{display:grid;grid-template-columns:130px 1fr;gap:18px;align-items:center;background:#fff;border:1px solid #ebdfc8;border-radius:14px;padding:16px}
 .author img{width:120px;height:120px;object-fit:cover;border-radius:12px;background:#ddd}
 

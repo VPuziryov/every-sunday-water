@@ -1,1 +1,12 @@
 http://* https://:splat 301!
+/start        /qr01/        301
+/checklist    /qr07/        301
+/continue     /qr13/        301
+
+/en/start        /en/qr01/        301
+/en/checklist    /en/qr07/        301
+/en/continue     /en/qr13/        301
+
+/it/start        /it/qr01/        301
+/it/checklist    /it/qr07/        301
+/it/continue     /it/qr13/        301

@@ -1,24 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Проверяем сохранённый язык
   const savedLang = localStorage.getItem('preferredLang');
 
-  // Если пользователь уже выбрал язык вручную —
-  // ничего не редиректим
-  if (savedLang) {
+  // ---------------------------------
+  // Если пользователь уже выбрал язык
+  // ---------------------------------
+
+  if (savedLang === 'ru') {
+
+    if (!window.location.pathname.startsWith('/ru')) {
+      window.location.href = '/ru/';
+      return;
+    }
+
     return;
   }
 
-  // Если уже открыта RU версия —
-  // ничего не делаем
-  if (window.location.pathname.startsWith('/ru')) {
+  if (savedLang === 'en') {
+
+    if (window.location.pathname.startsWith('/ru')) {
+      window.location.href = '/';
+      return;
+    }
+
     return;
   }
 
-  // Язык браузера
+  // ---------------------------------
+  // Первый визит — определяем язык браузера
+  // ---------------------------------
+
   const lang = navigator.language.toLowerCase();
 
-  // Русскоязычные / СНГ языки
   const ruLangs = [
     'ru',
     'uk',
@@ -27,11 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'ky'
   ];
 
-  // Проверяем язык
   const isRu = ruLangs.some(code => lang.startsWith(code));
 
-  // Если русский язык браузера —
-  // отправляем в /ru/
   if (isRu && window.location.pathname === '/') {
     window.location.href = '/ru/';
   }
@@ -39,9 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ----------------------------
-// СОХРАНЕНИЕ РУЧНОГО ВЫБОРА
-// ----------------------------
+// ---------------------------------
+// Сохранение ручного выбора языка
+// ---------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -51,13 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     link.addEventListener('click', () => {
 
-      // Если ссылка ведёт в RU
-      if (link.getAttribute('href').includes('/ru')) {
-        localStorage.setItem('preferredLang', 'ru');
-      }
+      const href = link.getAttribute('href');
 
-      // Иначе EN
-      else {
+      if (href.includes('/ru')) {
+        localStorage.setItem('preferredLang', 'ru');
+      } else {
         localStorage.setItem('preferredLang', 'en');
       }
 
